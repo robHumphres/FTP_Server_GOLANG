@@ -86,7 +86,10 @@ func UnzipNClean(fileToUnzip string) {
 }
 
 func deleteOldFolder() {
-
+	/*
+		todo, need to grab a list of the files in the directory sorted by file mod date, delete the last added
+	*/
+	fmt.Println("Made it to delete a file")
 }
 
 func Unzip(src, dest string) error {

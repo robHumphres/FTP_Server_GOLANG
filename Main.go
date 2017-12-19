@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 
 	"github.com/gorilla/mux"
+	"github.com/mholt/archiver"
 )
 
 func check(e error) {
@@ -64,25 +65,23 @@ func UnzipNClean(fileToUnzip string) {
 	files, _ := ioutil.ReadDir(pathString)
 	fmt.Println(len(files))
 
+	fmt.Println("File to Unzip's name is.... : " + fileToUnzip)
+
 	//Unzip the folder
-	Unzip(fileToUnzip, pathString)
+	errr := archiver.Zip.Open(fileToUnzip, "")
+
+	if errr != nil {
+		check(errr)
+	}
 
 	//Delete the folder
 	os.Remove(fileToUnzip)
+
 	fmt.Println("Deleted the old file")
 
 	if len(files) > 12 {
 		deleteOldFolder()
 	}
-
-	// //Unzip file
-	// cmd := exec.Command("unzip " + fileToUnzip)
-	// out, err := cmd.CombinedOutput()
-	// if err != nil {
-	// 	log.Fatalf("cmd.Run() failed with %s\n", err)
-	// }
-	// fmt.Printf("combined out:\n%s\n", string(out))
-
 }
 
 func deleteOldFolder() {
@@ -90,6 +89,15 @@ func deleteOldFolder() {
 		todo, need to grab a list of the files in the directory sorted by file mod date, delete the last added
 	*/
 	fmt.Println("Made it to delete a file")
+	// files, error := ioutil.ReadDir(".")
+	// if error != nil {
+	// 	panic(error)
+	// }
+
+	// for _, file := range files {
+	// 	fmt.Println(file.Name())
+	// }
+
 }
 
 func Unzip(src, dest string) error {

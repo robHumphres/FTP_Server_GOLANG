@@ -30,3 +30,4 @@ _testmain.go
 vendor/
 Main
 .DS_Store
+*.avi

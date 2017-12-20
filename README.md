@@ -29,3 +29,6 @@ Example of a request:
 
 
 The Zipped file will be unzipped and placed in the same location of executable.
+
+*Note* 
+Things that need to be done, delete function for Queue of only having 10 files upload at that time.

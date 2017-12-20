@@ -5,6 +5,8 @@ with the body having file name of "file" and then requires a zip file.
 
 The API route would be http://localhost:9000/upload
 
+To start service you can either run go run Main.go or if you have the executable ./Main
+
 Example of a request:
 
     public static void transferFile(String fileToTransfer){
